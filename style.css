@@ -1,0 +1,15 @@
+/* #parent-container {
+
+} */
+
+#grid-container {
+    display: grid;
+    gap: 1px;
+    width: 1000px;
+    height: 1000px;
+}
+
+.grid-item {
+    outline: 1px solid black;
+    margin: 0;
+}
