@@ -6,6 +6,7 @@ draw(); // calls function to enable drawing before user input
 
 // Control Box
 const controlBox = document.querySelector('#control-box');
+
 const setSideDiv = document.createElement('div');
 setSideDiv.setAttribute('id', 'side-settings-div');
 const setSideInput = document.createElement('input');
@@ -18,7 +19,22 @@ submitBtn.setAttribute('onclick', 'setNewGrid()');
 submitBtn.textContent = 'SUBMIT'
 setSideDiv.appendChild(setSideInput);
 setSideDiv.appendChild(submitBtn);
+
+const downloadResetDiv = document.createElement('div');
+downloadResetDiv.setAttribute('id', 'download-reset-div');
+const downloadButton = document.createElement('button');
+downloadButton.setAttribute('id', 'download-button');
+// downloadButton.setAttribute('onclick', 'downloadCanvas()') //future functionality;
+downloadButton.textContent = 'DOWNLOAD';
+const resetButton = document.createElement('button');
+resetButton.setAttribute('id', 'reset-button');
+resetButton.setAttribute('onclick', 'resetCanvas()');
+resetButton.textContent = 'RESET';
+downloadResetDiv.appendChild(downloadButton);
+downloadResetDiv.appendChild(resetButton);
+
 controlBox.appendChild(setSideDiv);
+controlBox.appendChild(downloadResetDiv);
 
 
 
