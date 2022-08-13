@@ -1,14 +1,14 @@
 const gridContainer = document.querySelector('.grid-container');
 gridContainer.setAttribute('id', 'grid-container');
 
-function createGrid(width, height) {
-    document.getElementById('grid-container').style.gridTemplateColumns = `repeat(${width}, ${(width/1000)*100}%)`;
-    document.getElementById('grid-container').style.gridTemplateRows = `repeat(${height}, ${(height/1000)*100}%)`;
-    for (i = 1; i <= (width*height); i++) {
+function createGrid(length) {
+    document.getElementById('grid-container').style.gridTemplateColumns = `repeat(${length}, ${650/length}px`;
+    document.getElementById('grid-container').style.gridTemplateRows = `repeat(${length}, ${650/length}px`;
+    for (i = 1; i <= (length*length); i++) {
         let gridBox = document.createElement('div');
         gridBox.setAttribute('class', 'grid-item');
         gridContainer.appendChild(gridBox);
     }
 }
 
-createGrid(16, 16);
+createGrid(10);

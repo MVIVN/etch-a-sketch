@@ -4,12 +4,13 @@
 
 #grid-container {
     display: grid;
-    gap: 1px;
-    width: 1000px;
-    height: 1000px;
+    width: 650px;
+    height: 650px;
+    border: 10px solid silver;
+    border-style: ridge;
 }
 
 .grid-item {
-    outline: 1px solid black;
+    outline: 1px solid lightgrey;
     margin: 0;
 }
