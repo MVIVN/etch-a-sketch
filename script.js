@@ -1,7 +1,27 @@
+// Sketchpad
 const gridContainer = document.querySelector('#grid-container');
+let numOfBoxes = 16; // default value when user opens the sketchpad
+createGrid(numOfBoxes); // function called to set default grid
 
-createGrid(60);
+// Control Box
+const controlBox = document.querySelector('#control-box');
+const setSideDiv = document.createElement('div');
+setSideDiv.setAttribute('id', 'side-settings-div');
+const setSideInput = document.createElement('input');
+setSideInput.setAttribute('type', 'text');
+setSideInput.setAttribute('placeholder', '16') // displays default grid setting
+setSideInput.setAttribute('id', 'input-box');
+const submitBtn = document.createElement('button');
+submitBtn.setAttribute('id', 'submit-button');
+submitBtn.setAttribute('onclick', 'setNewGrid()');
+submitBtn.textContent = 'SUBMIT'
+setSideDiv.appendChild(setSideInput);
+setSideDiv.appendChild(submitBtn);
+controlBox.appendChild(setSideDiv);
 
+
+
+// Drawing functionality
 const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
 gridBox.forEach(box => {
     box.addEventListener('mouseover', () => {
@@ -20,4 +40,17 @@ function createGrid(length) {
         box.setAttribute('class', 'grid-item');
         gridContainer.appendChild(box);
     }
+}
+
+function setNewGrid() {
+    numOfBoxes = setSideInput.value;
+    if (numOfBoxes < 1) {
+        numOfBoxes = 1;
+        // display some message
+    } else if (numOfBoxes > 100) {
+        numOfBoxes = 100;
+        // display some message
+    }
+
+    createGrid(numOfBoxes);
 }

@@ -24,10 +24,29 @@
     display: flex;
     width: 330px;
     height: 650px;
-    border: 10px solid #E5DACE;
+    border: 10px solid silver;
     border-style: ridge;
-    background-image: linear-gradient(to right, #fc00ff, #00dbde);
+    /* background-image: linear-gradient(to right, #fc00ff, #00dbde); /* I like this gradient, might come back to it*/
     background-image: linear-gradient(to right, #2c3e50, #3498db);
+}
+
+#side-settings-div {
+    display: flex;
+    margin: 20px auto;
+}
+
+#input-box {
+    height: 30px;
+    text-align: center;
+    width: 58.359px;
+    border-radius: 6px;
+    margin-right: 5px;
+}
+
+#submit-button {
+    height: 36px;
+    border-radius: 6px;
+    margin-left: 5px;
 }
 
 .grid-item {
