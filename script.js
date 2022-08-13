@@ -65,6 +65,14 @@ function createGrid(length) {
     }
 }
 
+// Accept 'Enter' key instead of submit button when setting new grid
+setSideInput.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      document.getElementById("submit-button").click();
+    }
+});
+
 function setNewGrid() {
     numOfBoxes = setSideInput.value;
     if (numOfBoxes < 1) {
