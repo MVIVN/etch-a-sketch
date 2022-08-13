@@ -32,6 +32,12 @@ function draw() {
     });
 }
 
+function resetCanvas () { 
+    const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
+    gridBox.forEach(box => 
+        {box.setAttribute('style', 'background-color: white')});
+}
+
 // Functions
 function createGrid(length) {
     document.getElementById('grid-container').style.gridTemplateColumns = `repeat(${length}, ${650 / length}px`;
@@ -54,5 +60,8 @@ function setNewGrid() {
     }
 
     createGrid(numOfBoxes);
+    resetCanvas();
     draw();
+    setSideInput.value = '';
+    setSideInput.setAttribute('placeholder', `${numOfBoxes}`);
 }
