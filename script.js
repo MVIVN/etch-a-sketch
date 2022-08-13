@@ -2,6 +2,7 @@
 const gridContainer = document.querySelector('#grid-container');
 let numOfBoxes = 16; // default value when user opens the sketchpad
 createGrid(numOfBoxes); // function called to set default grid
+draw(); // calls function to enable drawing before user input
 
 // Control Box
 const controlBox = document.querySelector('#control-box');
@@ -22,20 +23,20 @@ controlBox.appendChild(setSideDiv);
 
 
 // Drawing functionality
-const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
-gridBox.forEach(box => {
-    box.addEventListener('mouseover', () => {
-        box.setAttribute('style', 'background-color: black');
-    })
-});
-
-
+function draw() {
+    const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
+    gridBox.forEach(box => {
+        box.addEventListener('mouseover', () => {
+            box.setAttribute('style', 'background-color: black');
+        })
+    });
+}
 
 // Functions
 function createGrid(length) {
-    document.getElementById('grid-container').style.gridTemplateColumns = `repeat(${length}, ${650/length}px`;
-    document.getElementById('grid-container').style.gridTemplateRows = `repeat(${length}, ${650/length}px`;
-    for (i = 1; i <= (length*length); i++) {
+    document.getElementById('grid-container').style.gridTemplateColumns = `repeat(${length}, ${650 / length}px`;
+    document.getElementById('grid-container').style.gridTemplateRows = `repeat(${length}, ${650 / length}px`;
+    for (i = 1; i <= (length * length); i++) {
         let box = document.createElement('div');
         box.setAttribute('class', 'grid-item');
         gridContainer.appendChild(box);
@@ -53,4 +54,5 @@ function setNewGrid() {
     }
 
     createGrid(numOfBoxes);
+    draw();
 }
