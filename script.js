@@ -13,12 +13,9 @@ function createGrid(length) {
 
 createGrid(16);
 
-const gridBox = document.querySelectorAll('div.grid-item');
-console.log(gridBox);
-gridBox.forEach(addEventListener('mouseover', draw));
-
-function draw() {
-    for (i = 0; i < gridBox.length; i++) {
-        gridBox[i].classList.add('colored-in');
-    };
-}
+const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
+gridBox.forEach(box => {
+    box.addEventListener('mouseover', () => {
+        box.setAttribute('style', 'background-color: black');
+    })
+});
