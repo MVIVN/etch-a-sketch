@@ -5,3 +5,5 @@ Resources:
 Awesome gradient values courtesy of: https://uigradients.com/
 
 Code for triggering button click with enter found here: https://www.w3schools.com/HOWTO/howto_js_trigger_button_enter.asp
+
+Animated rainbow background courtesy of Milan Nohejl on CodePen: https://codepen.io/nohoid/pen/eYXpNL

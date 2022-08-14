@@ -49,10 +49,13 @@ const colorInput = document.createElement('input');
 colorInput.setAttribute('type', 'color');
 colorInput.setAttribute('id', 'color-input')
 colorInput.setAttribute('value', '#000000') // Sets default color to black
+const rainbowButton = document.createElement('div');
+rainbowButton.setAttribute('id', 'rainbow-button');
 colorPicker.appendChild(colorInput);
+colorPicker.appendChild(rainbowButton);
+
 const colorPaletteContainer = document.createElement('div');
 colorPaletteContainer.setAttribute('id', 'color-palette-container');
-
 const colorPalette =
     ['#660000', '#663300', '#666600', '#336600', '#006600', '#006633',
     '#006666', '#003366', '#000066', '#330066', '#990000', '#994C00',
