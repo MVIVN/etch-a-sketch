@@ -79,7 +79,10 @@
 #color-palette-container {
     display: grid;
     width: 300px;
-    height: 300px;
+    height: 150px;
+    margin: 10px 0;
+    border-top: 10px solid white;
+    border-bottom: 10px solid white;
 }
 
 .active-button {
@@ -89,6 +92,11 @@
 }
 
 .grid-item {
+    outline: 1px solid lightgrey;
+    margin: 0;
+}
+
+.color-box {
     outline: 1px solid lightgrey;
     margin: 0;
 }

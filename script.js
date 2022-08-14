@@ -4,6 +4,7 @@ let numOfBoxes = 16; // default value when user opens the sketchpad
 createGrid(numOfBoxes); // function called to set default grid
 draw(); // calls function to enable drawing before user input
 
+
 // Control Box
 const controlBox = document.querySelector('#control-box');
 
@@ -52,18 +53,16 @@ const colorPaletteContainer = document.createElement('div');
 colorPaletteContainer.setAttribute('id', 'color-palette-container');
 
 const colorPalettes = [
-    ['#FF4D80', '#FF3E41', '#DF367C', '#883955', '#4C3549'], //0
-    ['#090809', '#F40000', '#F44E3F', '#F4796B', '#F4998D'], //1
-    ['#156064', '#00C49A', '#F8E16C', '#FFC2B4', '#FB8F67'], //2
-    ['#DAFFED', '#9BF3F0', '#473198', '#4A0D67', '#ADFC92'], //3
-    ['#92BDA3', '#A1BA89', '#A5CC6B', '#806D40', '#382633'], //4
-    ['#0A2E36', '#27FB6B', '#14CC60', '#036D19', '#09A129'], //5
-    ['#540D6E', '#EE4266', '#FFD23F', '#F3FCF0', '#1F271B'], //6
-    ['#0267C1', '#0075C4', '#EFA00B', '#D65108', '#591F0A'], //7
-    ['#1F2041', '#4B3F72', '#FFC857', '#119DA4', '#19647E'], //8
-    ['#51CB20', '#76B041', '#639A88', '#3A5683', '#2708A0']  //9
+    ['#FF4D80', '#FF3E41', '#DF367C', '#883955', '#4C3549', '#090809', '#F40000', '#F44E3F', '#F4796B', '#F4998D'], //0
+    ['#156064', '#00C49A', '#F8E16C', '#FFC2B4', '#FB8F67', '#DAFFED', '#9BF3F0', '#473198', '#4A0D67', '#ADFC92'], //1
+    ['#92BDA3', '#A1BA89', '#A5CC6B', '#806D40', '#382633', '#0A2E36', '#27FB6B', '#14CC60', '#036D19', '#09A129'], //2
+    ['#540D6E', '#EE4266', '#FFD23F', '#F3FCF0', '#1F271B', '#0267C1', '#0075C4', '#EFA00B', '#D65108', '#591F0A'], //3
+    ['#1F2041', '#4B3F72', '#FFC857', '#119DA4', '#19647E', '#51CB20', '#76B041', '#639A88', '#3A5683', '#2708A0'], //4
 ];
+createPalette(); // generates the color palette
+
 colorfulContainer.appendChild(colorPicker);
+colorfulContainer.appendChild(colorPaletteContainer);
 
 
 
@@ -71,8 +70,6 @@ colorfulContainer.appendChild(colorPicker);
 controlBox.appendChild(setSideDiv);
 controlBox.appendChild(drawEraseResetDiv);
 controlBox.appendChild(colorfulContainer);
-
-
 
 
 // Functions
@@ -112,7 +109,13 @@ function setNewGrid() {
 }
 
 function createPalette () {
-    for ()
+    colorPaletteContainer.style.gridTemplateColumns = `repeat(10, 30px)`;
+    colorPaletteContainer.style.gridTemplateRows = `repeat(5, 30px)`;
+    for (i = 1; i <= 50; i++) {
+        let colorbox = document.createElement('div');
+        colorbox.setAttribute('class', 'color-box');
+        colorPaletteContainer.appendChild(colorbox);
+    }
 }
 
 // Drawing functionality
