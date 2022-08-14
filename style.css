@@ -60,6 +60,7 @@
 #reset-button {
     height: 36px;
     border-radius: 6px;
+    margin: 0 5px;
 }
 
 .active-button {
