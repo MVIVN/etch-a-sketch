@@ -3,7 +3,7 @@ const gridContainer = document.querySelector('#grid-container');
 let numOfBoxes = 16; // default value when user opens the sketchpad
 createGrid(numOfBoxes); // function called to set default grid
 draw(); // calls function to enable drawing before user input
-const pencilColor = '#000000'; // default pencil colour set to black
+let pencilColor = '#000000'; // default pencil colour set to black
 
 
 // Control Box
@@ -144,7 +144,7 @@ function rainbowPencil () {
     const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
     gridBox.forEach(box => {
         box.addEventListener('mouseover', () => {
-            box.setAttribute('style', `background-color: ${generateRandomColor}`);
+            pencilColor = generateRandomColor();
         })
     });
 }
@@ -156,6 +156,10 @@ function generateRandomColor () {
     let randomColour = `rgb(${r}, ${g}, ${b})`;
     return randomColour;
 }
+
+rainbowButton.addEventListener('click', () => {
+    pencilColor = rainbowPencil();
+})
 
 function erase() {
     const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
