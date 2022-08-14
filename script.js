@@ -39,45 +39,41 @@ drawEraseResetDiv.appendChild(drawButton);
 drawEraseResetDiv.appendChild(eraseButton);
 drawEraseResetDiv.appendChild(resetButton);
 
+const colorfulContainer = document.createElement('div');
+colorfulContainer.setAttribute('id', 'colorful-container');
+const colorPicker = document.createElement('div');
+colorPicker.setAttribute('id', 'color-picker-div')
+const colorInput = document.createElement('input');
+colorInput.setAttribute('type', 'color');
+colorInput.setAttribute('id', 'color-input')
+colorInput.setAttribute('value', '#000000') // Sets default color to black
+colorPicker.appendChild(colorInput);
+const colorPaletteContainer = document.createElement('div');
+colorPaletteContainer.setAttribute('id', 'color-palette-container');
+
+const colorPalettes = [
+    ['#FF4D80', '#FF3E41', '#DF367C', '#883955', '#4C3549'], //0
+    ['#090809', '#F40000', '#F44E3F', '#F4796B', '#F4998D'], //1
+    ['#156064', '#00C49A', '#F8E16C', '#FFC2B4', '#FB8F67'], //2
+    ['#DAFFED', '#9BF3F0', '#473198', '#4A0D67', '#ADFC92'], //3
+    ['#92BDA3', '#A1BA89', '#A5CC6B', '#806D40', '#382633'], //4
+    ['#0A2E36', '#27FB6B', '#14CC60', '#036D19', '#09A129'], //5
+    ['#540D6E', '#EE4266', '#FFD23F', '#F3FCF0', '#1F271B'], //6
+    ['#0267C1', '#0075C4', '#EFA00B', '#D65108', '#591F0A'], //7
+    ['#1F2041', '#4B3F72', '#FFC857', '#119DA4', '#19647E'], //8
+    ['#51CB20', '#76B041', '#639A88', '#3A5683', '#2708A0']  //9
+];
+colorfulContainer.appendChild(colorPicker);
+
+
+
+// Add the various elements created above into the Control Box
 controlBox.appendChild(setSideDiv);
 controlBox.appendChild(drawEraseResetDiv);
+controlBox.appendChild(colorfulContainer);
 
 
 
-// Drawing functionality
-function draw() {
-    const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
-    gridBox.forEach(box => {
-        box.addEventListener('mouseover', () => {
-            box.setAttribute('style', 'background-color: black');
-        })
-    });
-}
-
-function erase() {
-    const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
-    gridBox.forEach(box => {
-        box.addEventListener('mouseover', () => {
-            box.setAttribute('style', 'background-color: white');
-        })
-    });
-}
-
-function resetCanvas () { 
-    const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
-    gridBox.forEach(box => 
-        {box.setAttribute('style', 'background-color: white')});
-}
-
-function activeButton (active, disabled1) {
-    active.classList.add('active-button');
-    disabled1.classList.remove('active-button');
-}
-
-function clickReset () {
-    activeButton(drawButton, eraseButton);
-    draw();
-}
 
 // Functions
 function createGrid(length) {
@@ -114,3 +110,43 @@ function setNewGrid() {
     setSideInput.value = '';
     setSideInput.setAttribute('placeholder', `${numOfBoxes}`);
 }
+
+function createPalette () {
+    for ()
+}
+
+// Drawing functionality
+function draw() {
+    const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
+    gridBox.forEach(box => {
+        box.addEventListener('mouseover', () => {
+            box.setAttribute('style', 'background-color: black');
+        })
+    });
+}
+
+function erase() {
+    const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
+    gridBox.forEach(box => {
+        box.addEventListener('mouseover', () => {
+            box.setAttribute('style', 'background-color: white');
+        })
+    });
+}
+
+function resetCanvas () { 
+    const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
+    gridBox.forEach(box => 
+        {box.setAttribute('style', 'background-color: white')});
+}
+
+function activeButton (active, disabled1) {
+    active.classList.add('active-button');
+    disabled1.classList.remove('active-button');
+}
+
+function clickReset () {
+    activeButton(drawButton, eraseButton);
+    draw();
+}
+

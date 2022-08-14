@@ -63,6 +63,25 @@
     margin: 0 5px;
 }
 
+#colorful-container {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    border: 10px solid white;
+    margin: 20px auto;
+}
+
+#color-input {
+    width: 70px;
+    height: 70px;
+}
+
+#color-palette-container {
+    display: grid;
+    width: 300px;
+    height: 300px;
+}
+
 .active-button {
     color: white;
     text-shadow: 2px 2px 2px rgb(80, 80, 80);
