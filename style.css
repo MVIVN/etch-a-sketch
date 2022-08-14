@@ -16,7 +16,7 @@
     display: grid;
     width: 650px;
     height: 650px;
-    border: 10px solid silver;
+    border: 5px solid silver;
     border-style: ridge;
 }
 
@@ -25,10 +25,10 @@
     flex-direction: column;
     width: 330px;
     height: 650px;
-    border: 10px solid silver;
+    border: 5px solid silver;
     border-style: ridge;
     /* background-image: linear-gradient(to right, #fc00ff, #00dbde); /* I like this gradient, might come back to it*/
-    background-image: linear-gradient(to right, #2c3e50, #3498db);
+    background-image: linear-gradient(to right, #8e9eab, #eef2f3);
 }
 
 #side-settings-div {
@@ -88,7 +88,7 @@
 .active-button {
     color: white;
     text-shadow: 2px 2px 2px rgb(80, 80, 80);
-    background: linear-gradient(to right, #c02425, #f0cb35);
+    background: linear-gradient(to right, #b24592, #f15f79);
 }
 
 .grid-item {
