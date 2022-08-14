@@ -137,6 +137,23 @@ function setColor() {
     //function to set pencil color here
 }
 
+function rainbowPencil () {
+    const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
+    gridBox.forEach(box => {
+        box.addEventListener('mouseover', () => {
+            box.setAttribute('style', `background-color: ${generateRandomColor}`);
+        })
+    });
+}
+
+function generateRandomColor () {
+    let r = Math.floor(Math.random() * 255);
+    let g = Math.floor(Math.random() * 255);
+    let b = Math.floor(Math.random() * 255);
+    let randomColour = `rgb(${r}, ${g}, ${b})`;
+    return randomColour;
+}
+
 function erase() {
     const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
     gridBox.forEach(box => {
