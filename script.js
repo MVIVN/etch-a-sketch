@@ -52,13 +52,9 @@ colorPicker.appendChild(colorInput);
 const colorPaletteContainer = document.createElement('div');
 colorPaletteContainer.setAttribute('id', 'color-palette-container');
 
-const colorPalettes = [
-    ['#FF4D80', '#FF3E41', '#DF367C', '#883955', '#4C3549', '#090809', '#F40000', '#F44E3F', '#F4796B', '#F4998D'], //0
-    ['#156064', '#00C49A', '#F8E16C', '#FFC2B4', '#FB8F67', '#DAFFED', '#9BF3F0', '#473198', '#4A0D67', '#ADFC92'], //1
-    ['#92BDA3', '#A1BA89', '#A5CC6B', '#806D40', '#382633', '#0A2E36', '#27FB6B', '#14CC60', '#036D19', '#09A129'], //2
-    ['#540D6E', '#EE4266', '#FFD23F', '#F3FCF0', '#1F271B', '#0267C1', '#0075C4', '#EFA00B', '#D65108', '#591F0A'], //3
-    ['#1F2041', '#4B3F72', '#FFC857', '#119DA4', '#19647E', '#51CB20', '#76B041', '#639A88', '#3A5683', '#2708A0'], //4
-];
+const colorPalette =
+    ['#FF4D80', '#FF3E41', '#DF367C', '#883955', '#4C3549', '#090809','#F40000', '#F44E3F', '#F4796B', '#F4998D', '#156064', '#00C49A', '#F8E16C', '#FFC2B4', '#FB8F67', '#DAFFED', '#9BF3F0', '#473198', '#4A0D67', '#ADFC92', '#92BDA3', '#A1BA89', '#A5CC6B', '#806D40', '#382633', '#0A2E36', '#27FB6B', '#14CC60', '#036D19', '#09A129',
+    '#540D6E', '#EE4266', '#FFD23F', '#F3FCF0', '#ffb918', '#0267C1', '#0075C4', '#EFA00B', '#D65108', '#591F0A', '#1F2041', '#4B3F72', '#FFC857', '#119DA4', '#19647E', '#51CB20', '#76B041', '#639A88', '#3A5683', '#2708A0'];
 createPalette(); // generates the color palette
 
 colorfulContainer.appendChild(colorPicker);
@@ -108,14 +104,17 @@ function setNewGrid() {
     setSideInput.setAttribute('placeholder', `${numOfBoxes}`);
 }
 
+
+
 function createPalette () {
     colorPaletteContainer.style.gridTemplateColumns = `repeat(10, 30px)`;
     colorPaletteContainer.style.gridTemplateRows = `repeat(5, 30px)`;
-    for (i = 1; i <= 50; i++) {
+    for (i = 1, j = 0; i <= 50; i++, j++) {
         let colorbox = document.createElement('div');
-        colorbox.setAttribute('class', 'color-box');
+        colorbox.setAttribute('id', 'color-box');
+        colorbox.setAttribute('style', `background-color: ${colorPalette[j]}`)
         colorPaletteContainer.appendChild(colorbox);
-    }
+    }    
 }
 
 // Drawing functionality
