@@ -3,6 +3,7 @@ const gridContainer = document.querySelector('#grid-container');
 let numOfBoxes = 16; // default value when user opens the sketchpad
 createGrid(numOfBoxes); // function called to set default grid
 draw(); // calls function to enable drawing before user input
+const pencilColor = '#000000'; // default pencil colour set to black
 
 
 // Control Box
@@ -53,15 +54,15 @@ const colorPaletteContainer = document.createElement('div');
 colorPaletteContainer.setAttribute('id', 'color-palette-container');
 
 const colorPalette =
-    ['#FF4D80', '#FF3E41', '#DF367C', '#883955', '#4C3549', '#090809',
-    '#F40000', '#F44E3F', '#F4796B', '#F4998D', '#156064', '#00C49A',
-    '#F8E16C', '#FFC2B4', '#FB8F67', '#DAFFED', '#9BF3F0', '#473198',
-    '#4A0D67', '#ADFC92', '#92BDA3', '#A1BA89', '#A5CC6B', '#806D40',
-    '#382633', '#0A2E36', '#27FB6B', '#14CC60', '#036D19', '#09A129',
-    '#540D6E', '#EE4266', '#FFD23F', '#F3FCF0', '#ffb918', '#0267C1',
-    '#0075C4', '#EFA00B', '#D65108', '#591F0A', '#1F2041', '#4B3F72',
-    '#FFC857', '#119DA4', '#19647E', '#51CB20', '#76B041', '#639A88',
-    '#3A5683', '#2708A0'];
+    ['#660000', '#663300', '#666600', '#336600', '#006600', '#006633',
+    '#006666', '#003366', '#000066', '#330066', '#990000', '#994C00',
+    '#999900', '#4C9900', '#009900', '#00994C', '#009999', '#004C99',
+    '#000099', '#4C0099', '#CC0000', '#CC6600', '#CCCC00', '#66CC00',
+    '#00CC00', '#00CC66', '#00CCCC', '#0066CC', '#0000CC', '#6600CC',
+    '#FF0000', '#FF8000', '#FFFF00', '#80FF00', '#00FF00', '#00FF80',
+    '#00FFFF', '#0080FF', '#0000FF', '#7F00FF', '#FF3333', '#FF9933',
+    '#FFFF33', '#99FF33', '#33FF33', '#33FF99', '#33FFFF', '#3399FF',
+    '#3333FF', '#9933FF'];
 createPalette(); // generates the color palette
 
 colorfulContainer.appendChild(colorPicker);
@@ -127,9 +128,13 @@ function draw() {
     const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
     gridBox.forEach(box => {
         box.addEventListener('mouseover', () => {
-            box.setAttribute('style', 'background-color: black');
+            box.setAttribute('style', `background-color: ${pencilColor}`);
         })
     });
+}
+
+function setColor() {
+    //function to set pencil color here
 }
 
 function erase() {
