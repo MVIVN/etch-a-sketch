@@ -50,34 +50,25 @@
     margin-left: 5px;
 }
 
-#download-reset-div {
+#draw-erase-reset {
     display: flex;
     margin: 20px auto;
 }
 
-#download-button {
-    height: 36px;
-    border-radius: 6px;
-    margin-left: 5px;
-    color: white;
-    text-shadow: 2px 2px 2px rgb(80, 80, 80);
-    background-image: linear-gradient(to right, #00C9FF, #92FE9D);
-}
-
+#draw-button,
+#erase-button,
 #reset-button {
     height: 36px;
     border-radius: 6px;
-    margin-left: 5px;
+}
+
+.active-button {
     color: white;
     text-shadow: 2px 2px 2px rgb(80, 80, 80);
-    background-image: linear-gradient(to right, #B24592, #F15F79);
+    background: linear-gradient(to right, #c02425, #f0cb35);
 }
 
 .grid-item {
     outline: 1px solid lightgrey;
     margin: 0;
-}
-
-.colored-in {
-    background-color: black;
 }

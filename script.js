@@ -20,21 +20,27 @@ submitBtn.textContent = 'SUBMIT'
 setSideDiv.appendChild(setSideInput);
 setSideDiv.appendChild(submitBtn);
 
-const downloadResetDiv = document.createElement('div');
-downloadResetDiv.setAttribute('id', 'download-reset-div');
-const downloadButton = document.createElement('button');
-downloadButton.setAttribute('id', 'download-button');
-// downloadButton.setAttribute('onclick', 'downloadCanvas()') //future functionality;
-downloadButton.textContent = 'DOWNLOAD';
+const drawEraseResetDiv = document.createElement('div');
+drawEraseResetDiv.setAttribute('id', 'draw-erase-reset');
+const drawButton = document.createElement('button');
+const eraseButton = document.createElement('button');
 const resetButton = document.createElement('button');
+drawButton.setAttribute('id', 'draw-button');
+drawButton.setAttribute('onclick', 'draw(); activeButton(drawButton, eraseButton)');
+drawButton.textContent = 'DRAW';
+activeButton(drawButton, eraseButton) // Sets default button state when sketchpad loads
+eraseButton.setAttribute('id', 'erase-button');
+eraseButton.setAttribute('onclick', 'erase(); activeButton(eraseButton, drawButton)');
+eraseButton.textContent = 'ERASE';
 resetButton.setAttribute('id', 'reset-button');
-resetButton.setAttribute('onclick', 'resetCanvas()');
+resetButton.setAttribute('onclick', 'resetCanvas(); clickReset()');
 resetButton.textContent = 'RESET';
-downloadResetDiv.appendChild(downloadButton);
-downloadResetDiv.appendChild(resetButton);
+drawEraseResetDiv.appendChild(drawButton);
+drawEraseResetDiv.appendChild(eraseButton);
+drawEraseResetDiv.appendChild(resetButton);
 
 controlBox.appendChild(setSideDiv);
-controlBox.appendChild(downloadResetDiv);
+controlBox.appendChild(drawEraseResetDiv);
 
 
 
@@ -48,10 +54,29 @@ function draw() {
     });
 }
 
+function erase() {
+    const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
+    gridBox.forEach(box => {
+        box.addEventListener('mouseover', () => {
+            box.setAttribute('style', 'background-color: white');
+        })
+    });
+}
+
 function resetCanvas () { 
     const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
     gridBox.forEach(box => 
         {box.setAttribute('style', 'background-color: white')});
+}
+
+function activeButton (active, disabled1) {
+    active.classList.add('active-button');
+    disabled1.classList.remove('active-button');
+}
+
+function clickReset () {
+    activeButton(drawButton, eraseButton);
+    draw();
 }
 
 // Functions
