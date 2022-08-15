@@ -76,6 +76,15 @@
     justify-content: space-evenly;
 }
 
+#current-color {
+    width: 62px;
+    height: 62px;
+    border: 4px solid white;
+    border-radius: 50%;
+    margin-top: 10px;
+    background-color: black;
+}
+
 #color-input {
     width: 70px;
     height: 70px;

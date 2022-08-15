@@ -5,7 +5,6 @@ createGrid(numOfBoxes); // function called to set default grid
 draw(); // calls function to enable drawing before user input
 let pencilColor = '#000000'
 
-
 // Control Box
 const controlBox = document.querySelector('#control-box');
 
@@ -51,6 +50,9 @@ colorfulContainer.setAttribute('id', 'colorful-container');
 const colorPicker = document.createElement('div');
 colorPicker.setAttribute('id', 'color-picker-div');
 
+const currentColor = document.createElement('div');
+currentColor.setAttribute('id', 'current-color');
+
 const colorInput = document.createElement('input');
 colorInput.setAttribute('type', 'color');
 colorInput.setAttribute('id', 'color-input')
@@ -61,6 +63,8 @@ colorInput.addEventListener('change', function() {
 
 const rainbowButton = document.createElement('div');
 rainbowButton.setAttribute('id', 'rainbow-button');
+
+colorPicker.appendChild(currentColor);
 colorPicker.appendChild(colorInput);
 colorPicker.appendChild(rainbowButton);
 
@@ -133,6 +137,12 @@ function createPalette () {
         colorbox.setAttribute('id', 'color-box');
         colorbox.setAttribute('style', `background-color: ${colorPalette[j]}`)
         colorPaletteContainer.appendChild(colorbox);
+        colorbox.addEventListener('click', function() {
+            pencilColor = colorbox.style.backgroundColor;
+            draw();
+            activeButton(drawButton, eraseButton);
+            currentColor.style.backgroundColor = colorbox.style.backgroundColor;
+        });
     }    
 }
 
@@ -180,6 +190,7 @@ function resetCanvas () {
     const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
     gridBox.forEach(box => 
         {box.setAttribute('style', 'background-color: white')});
+    activeButton(drawButton, eraseButton);
 }
 
 function activeButton (active, disabled1) {
@@ -191,4 +202,3 @@ function clickReset () {
     activeButton(drawButton, eraseButton);
     draw();
 }
-
