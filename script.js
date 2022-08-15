@@ -170,9 +170,9 @@ function draw(color) {
 // }
 
 function generateRandomColor () {
-    let r = Math.floor(Math.random() * 255);
-    let g = Math.floor(Math.random() * 255);
-    let b = Math.floor(Math.random() * 255);
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
     let randomColour = `rgb(${r}, ${g}, ${b})`;
     return randomColour;
 }
