@@ -125,6 +125,8 @@ function setNewGrid() {
 
     createGrid(numOfBoxes);
     resetCanvas();
+    pencilColor = '#000000';
+    currentColor.style.backgroundColor = pencilColor;
     draw(pencilColor);
     setSideInput.value = '';
     setSideInput.setAttribute('placeholder', `${numOfBoxes}`);
@@ -158,14 +160,14 @@ function draw(color) {
     });
 }
 
-function rainbowPencil () {
-    const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
-    gridBox.forEach(box => {
-        box.addEventListener('mouseover', () => {
-            pencilColor = generateRandomColor();
-        })
-    });
-}
+// function rainbowPencil () {
+//     const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
+//     gridBox.forEach(box => {
+//         box.addEventListener('mouseover', () => {
+//             pencilColor = generateRandomColor();
+//         })
+//     });
+// }
 
 function generateRandomColor () {
     let r = Math.floor(Math.random() * 255);
@@ -175,8 +177,14 @@ function generateRandomColor () {
     return randomColour;
 }
 
-rainbowButton.addEventListener('click', () => {
-    rainbowPencil();
+rainbowButton.addEventListener('click', function() {
+    const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
+    gridBox.forEach(box => {
+        box.addEventListener('mouseover', () => {
+            pencilColor = generateRandomColor();
+            box.setAttribute('style', `background-color: ${pencilColor}`);
+        });
+    });
 });
 
 function erase() {
