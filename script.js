@@ -2,8 +2,8 @@
 const gridContainer = document.querySelector('#grid-container');
 let numOfBoxes = 16; // default value when user opens the sketchpad
 createGrid(numOfBoxes); // function called to set default grid
-draw(); // calls function to enable drawing before user input
-let pencilColor = '#000000'
+let pencilColor = '#000000';
+draw(pencilColor); // calls function to enable drawing before user input
 
 // Control Box
 const controlBox = document.querySelector('#control-box');
@@ -28,7 +28,7 @@ const eraseButton = document.createElement('button');
 const resetButton = document.createElement('button');
 
 drawButton.setAttribute('id', 'draw-button');
-drawButton.setAttribute('onclick', 'draw(); activeButton(drawButton, eraseButton)');
+drawButton.setAttribute('onclick', 'draw(pencilColor); activeButton(drawButton, eraseButton)');
 drawButton.textContent = 'DRAW';
 activeButton(drawButton, eraseButton) // Sets default button state when sketchpad loads
 
@@ -59,6 +59,7 @@ colorInput.setAttribute('id', 'color-input')
 colorInput.setAttribute('value', '#000000'); // Sets default color to black
 colorInput.addEventListener('change', function() {
     pencilColor = colorInput.value;
+    draw(pencilColor);
 });
 
 const rainbowButton = document.createElement('div');
@@ -124,7 +125,7 @@ function setNewGrid() {
 
     createGrid(numOfBoxes);
     resetCanvas();
-    draw();
+    draw(pencilColor);
     setSideInput.value = '';
     setSideInput.setAttribute('placeholder', `${numOfBoxes}`);
 }
@@ -139,7 +140,8 @@ function createPalette () {
         colorPaletteContainer.appendChild(colorbox);
         colorbox.addEventListener('click', function() {
             pencilColor = colorbox.style.backgroundColor;
-            draw();
+            console.log(pencilColor);
+            draw(pencilColor);
             activeButton(drawButton, eraseButton);
             currentColor.style.backgroundColor = colorbox.style.backgroundColor;
         });
@@ -147,11 +149,11 @@ function createPalette () {
 }
 
 // Drawing functionality
-function draw() {
+function draw(color) {
     const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
     gridBox.forEach(box => {
         box.addEventListener('mouseover', () => {
-            box.setAttribute('style', `background-color: ${pencilColor}`);
+            box.setAttribute('style', `background-color: ${color}`);
         })
     });
 }
@@ -174,8 +176,8 @@ function generateRandomColor () {
 }
 
 rainbowButton.addEventListener('click', () => {
-    pencilColor = rainbowPencil();
-})
+    rainbowPencil();
+});
 
 function erase() {
     const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
@@ -200,5 +202,5 @@ function activeButton (active, disabled1) {
 
 function clickReset () {
     activeButton(drawButton, eraseButton);
-    draw();
+    draw(pencilColor);
 }
