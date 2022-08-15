@@ -3,7 +3,7 @@ const gridContainer = document.querySelector('#grid-container');
 let numOfBoxes = 16; // default value when user opens the sketchpad
 createGrid(numOfBoxes); // function called to set default grid
 draw(); // calls function to enable drawing before user input
-let pencilColor = '#000000'; // default pencil colour set to black
+let pencilColor = '#000000'
 
 
 // Control Box
@@ -27,28 +27,38 @@ drawEraseResetDiv.setAttribute('id', 'draw-erase-reset');
 const drawButton = document.createElement('button');
 const eraseButton = document.createElement('button');
 const resetButton = document.createElement('button');
+
 drawButton.setAttribute('id', 'draw-button');
 drawButton.setAttribute('onclick', 'draw(); activeButton(drawButton, eraseButton)');
 drawButton.textContent = 'DRAW';
 activeButton(drawButton, eraseButton) // Sets default button state when sketchpad loads
+
 eraseButton.setAttribute('id', 'erase-button');
 eraseButton.setAttribute('onclick', 'erase(); activeButton(eraseButton, drawButton)');
 eraseButton.textContent = 'ERASE';
+
 resetButton.setAttribute('id', 'reset-button');
 resetButton.setAttribute('onclick', 'resetCanvas(); clickReset()');
 resetButton.textContent = 'RESET';
+
 drawEraseResetDiv.appendChild(drawButton);
 drawEraseResetDiv.appendChild(eraseButton);
 drawEraseResetDiv.appendChild(resetButton);
 
 const colorfulContainer = document.createElement('div');
 colorfulContainer.setAttribute('id', 'colorful-container');
+
 const colorPicker = document.createElement('div');
-colorPicker.setAttribute('id', 'color-picker-div')
+colorPicker.setAttribute('id', 'color-picker-div');
+
 const colorInput = document.createElement('input');
 colorInput.setAttribute('type', 'color');
 colorInput.setAttribute('id', 'color-input')
-colorInput.setAttribute('value', '#000000') // Sets default color to black
+colorInput.setAttribute('value', '#000000'); // Sets default color to black
+colorInput.addEventListener('change', function() {
+    pencilColor = colorInput.value;
+});
+
 const rainbowButton = document.createElement('div');
 rainbowButton.setAttribute('id', 'rainbow-button');
 colorPicker.appendChild(colorInput);
@@ -134,10 +144,6 @@ function draw() {
             box.setAttribute('style', `background-color: ${pencilColor}`);
         })
     });
-}
-
-function setColor() {
-    //function to set pencil color here
 }
 
 function rainbowPencil () {
