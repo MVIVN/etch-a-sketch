@@ -180,6 +180,7 @@ function generateRandomColor () {
 }
 
 rainbowButton.addEventListener('click', function() {
+    activeButton(rainbowButton, eraseButton);
     const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
     gridBox.forEach(box => {
         box.addEventListener('mouseover', () => {
@@ -206,7 +207,12 @@ function resetCanvas () {
 }
 
 function activeButton (active, disabled1) {
-    active.classList.add('active-button');
+    if (active === drawButton || active === eraseButton) {
+        active.classList.add('active-button');
+        drawButton.classList.remove('active-rainbow');
+    } else if (active === rainbowButton) {
+        drawButton.classList.add('active-rainbow');
+    }
     disabled1.classList.remove('active-button');
 }
 
