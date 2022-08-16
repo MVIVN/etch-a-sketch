@@ -16,7 +16,9 @@ setSideInput.setAttribute('placeholder', '16') // displays default grid setting
 setSideInput.setAttribute('id', 'input-box');
 const submitBtn = document.createElement('button');
 submitBtn.setAttribute('id', 'submit-button');
-submitBtn.setAttribute('onclick', 'setNewGrid()');
+submitBtn.addEventListener('click', function() {
+    setNewGrid();
+});
 submitBtn.textContent = 'SUBMIT'
 setSideDiv.appendChild(setSideInput);
 setSideDiv.appendChild(submitBtn);
@@ -28,16 +30,25 @@ const eraseButton = document.createElement('button');
 const resetButton = document.createElement('button');
 
 drawButton.setAttribute('id', 'draw-button');
-drawButton.setAttribute('onclick', 'draw(pencilColor); activeButton(drawButton, eraseButton)');
+drawButton.addEventListener('click', function() {
+    draw(pencilColor);
+    activeButton(drawButton, eraseButton);
+});
 drawButton.textContent = 'DRAW';
-activeButton(drawButton, eraseButton) // Sets default button state when sketchpad loads
+activeButton(drawButton, eraseButton) // Sets default button state when sketchpad loads onclick
 
 eraseButton.setAttribute('id', 'erase-button');
-eraseButton.setAttribute('onclick', 'erase(); activeButton(eraseButton, drawButton)');
+eraseButton.addEventListener('click', function () {
+    erase();
+    activeButton(eraseButton, drawButton);
+});
 eraseButton.textContent = 'ERASE';
 
 resetButton.setAttribute('id', 'reset-button');
-resetButton.setAttribute('onclick', 'resetCanvas(); clickReset()');
+resetButton.addEventListener('click', function() {
+    resetCanvas();
+    clickReset();
+});
 resetButton.textContent = 'RESET';
 
 drawEraseResetDiv.appendChild(drawButton);
@@ -159,15 +170,6 @@ function draw(color) {
         })
     });
 }
-
-// function rainbowPencil () {
-//     const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
-//     gridBox.forEach(box => {
-//         box.addEventListener('mouseover', () => {
-//             pencilColor = generateRandomColor();
-//         })
-//     });
-// }
 
 function generateRandomColor () {
     let r = Math.floor(Math.random() * 256);
