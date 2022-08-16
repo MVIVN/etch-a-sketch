@@ -73,9 +73,15 @@ colorInput.addEventListener('change', function() {
     draw(pencilColor);
     activeButton(drawButton, eraseButton);
 });
+colorInput.addEventListener('click', function() {
+    pencilColor = colorInput.value;
+    draw(pencilColor);
+    activeButton(drawButton, eraseButton);
+});
+
 
 const rainbowButton = document.createElement('div');
-rainbowButton.setAttribute('id', 'rainbow-button');
+rainbowButton.setAttribute('class', 'rainbow-button');
 
 // colorPicker.appendChild(currentColor);
 colorPicker.appendChild(colorInput);
@@ -155,7 +161,6 @@ function createPalette () {
         colorPaletteContainer.appendChild(colorbox);
         colorbox.addEventListener('click', function() {
             pencilColor = colorbox.style.backgroundColor;
-            console.log(pencilColor);
             draw(pencilColor);
             activeButton(drawButton, eraseButton);
             currentColor.style.backgroundColor = colorbox.style.backgroundColor;
@@ -214,8 +219,6 @@ function activeButton (active, disabled1) {
         drawButton.classList.remove('active-rainbow');
     } else if (active === rainbowButton) {
         drawButton.classList.add('active-rainbow');
-        rainbowButton.classList.remove('rainbow-button');
-        rainbowButton.classList.add('rainbow-button-active');
         console.log(rainbowButton);
     }
     disabled1.classList.remove('active-button');
