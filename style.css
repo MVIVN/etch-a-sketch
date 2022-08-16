@@ -10,7 +10,7 @@ body {
 }
 
 #header {
-    margin-top: 30px;
+    margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
     border: 5px solid silver;
@@ -27,6 +27,7 @@ body {
 
 #header h1 {
     text-shadow: 2px 2px 5px rgb(54, 54, 54);
+    margin: 0;
 }
 
 .sketch-pad {
@@ -63,7 +64,11 @@ body {
 }
 
 #set-side-instructions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 280px;
+    height: 80px;
     padding: 15px;
     border: 5px solid silver;
     border-style: ridge;
@@ -72,12 +77,11 @@ body {
     font-size: 0.9rem;
     text-align: center;
     color: rgb(10, 184, 10);
-
 }
 
 .typeNumberHere {
     border-left: 5px solid silver;
-    border-right: none;
+    border-right: 5px solid silver;
     border-bottom: 5px solid silver;;
     border-top: none;
     border-style: ridge;
@@ -111,7 +115,7 @@ body {
     height: 36px;
     min-width: 90px;
     height: 55px;
-    border-left: none;
+    border-left: 5px solid silver;
     border-right: 5px solid silver;
     border-bottom: 5px solid silver;;
     border-top: none;
@@ -126,30 +130,60 @@ body {
 
 #draw-erase-reset {
     display: flex;
-    margin: 20px auto;
+    margin: 0 auto;
 }
 
 #draw-button,
 #erase-button,
 #reset-button {
-    height: 36px;
+    min-width: 100px;
+    min-height: 36px;
+    max-height: 36px;
     border-radius: 6px;
-    margin: 0 5px;
+    margin: 10px 5px;
     transition: all 0.5s;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+#draw-button:hover,
+#erase-button:hover,
+#reset-button:hover {
+    background-color: orange;
 }
 
 #colorful-container {
     display: flex;
     flex-direction: column;
-    width: 300px;
-    border: 10px solid white;
-    margin: 20px auto;
-    box-shadow: 2px 10px 10px rgb(88, 88, 88);
+    width: 330px;
+    margin: 5px auto;
 }
 
 #color-picker-div {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    margin: 0 auto;
+    width: 320px;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+#choice-box,
+#rainbow-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 160px;
+}
+
+.select-color,
+.select-rainbow {
+    width: 148px;
+    text-align: center;
+    border-left: 4px solid white;
+    border-right: 4px solid white;
+    border-top: 4px solid white;
+    background-color: black;
+    color: rgb(10, 184, 10);
+    z-index: 5;
 }
 
 #current-color {
@@ -168,10 +202,10 @@ body {
 }
 
 #color-input {
-    width: 70px;
+    min-width: 156px;
     height: 70px;
     border: none;
-    margin-top: 10px;
+    background-color: white;
 }
 
 .rainbow-button-active {
@@ -186,13 +220,12 @@ body {
     display: grid;
     width: 300px;
     height: 150px;
-    margin: 30px 0 0 0;
-    border-top: 10px solid white;
-    border-bottom: 10px solid white;
+    margin: 10px auto 0;
+    border: 10px solid white;
 }
 
 .active-box {
-    box-shadow: rgb(252, 184, 59) 2px 2px 10px 5px
+    box-shadow: rgb(252, 184, 59) 1px 5px 10px 1px
 }
 
 .active-current-color {
@@ -203,15 +236,14 @@ body {
     color: white;
     text-shadow: 2px 2px 2px rgb(80, 80, 80);
     background: linear-gradient(to right, #b24592, #f15f79);
-    border: 4px solid orange;
+    border: 4px solid white;
     box-shadow: rgb(252, 184, 59) 2px 2px 10px 5px
 }
 
 .rainbow-button {
-    width: 62px;
+    width: 148px;
     height: 62px;
     border: 4px solid white;
-    margin-top: 10px;
     background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
 }
 
@@ -220,7 +252,7 @@ body {
     text-shadow: 2px 2px 2px rgb(80, 80, 80);
     width: 62px;
     height: 62px;
-    border: 4px solid orange;
+    border: 4px solid white;
     margin-top: 10px;
     background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
     box-shadow: rgb(252, 184, 59) 2px 2px 10px 5px

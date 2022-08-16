@@ -29,6 +29,7 @@ const currentColor = document.getElementById('current-color');
 const colorInput = document.getElementById('color-input');
 
 
+
 const rainbowButton = document.getElementById('rainbow-button');
 rainbowButton.setAttribute('class', 'rainbow-button');
 
@@ -61,8 +62,8 @@ function createGrid(length) {
 function setNewGrid() {
     numOfBoxes = setSideInput.value;
     if (numOfBoxes < 1) {
-        numOfBoxes = 1;
-        setSideInstructions.textContent = "That's too low! 😮 You need at least ONE pixel to make art, so I've turned the grid into one big pixel 😊";
+        numOfBoxes = 3;
+        setSideInstructions.textContent = "That's too low! 😮 You need at least ONE pixel to make art, but since that's not a lot to work with I'll give you a 3 x 3 grid 😊";
     } else if (numOfBoxes > 100) {
         numOfBoxes = 100;
         setSideInstructions.textContent = "Sorry, I can't handle that many pixels! 😰 I know you have big ideas, so a 100 x 100 grid should do the trick! 😊";
@@ -133,8 +134,8 @@ function resetCanvas () {
 
     numOfBoxes = setSideInput.value;
     if (numOfBoxes < 1) {
-        numOfBoxes = 1;
-        setSideInstructions.textContent = "Your input is too low -- or you didn't type a valid number! 😮 You need at least ONE pixel to make art, so I've turned the grid into one big pixel 😊";
+        numOfBoxes = 3;
+        setSideInstructions.textContent = "Your input is too low -- or you didn't type a valid number! 😮 You need at least ONE pixel to make art, but I'll give you a 3 x 3 grid to get started 😊";
     } else if (numOfBoxes > 100) {
         numOfBoxes = 100;
         setSideInstructions.textContent = "Sorry, I can't handle that many pixels! 😰 I know you have big ideas, so a 100 x 100 grid should do the trick! 😊";
@@ -194,6 +195,7 @@ function clickReset () {
 
 submitBtn.addEventListener('click', function() {
     setNewGrid();
+    console.log(typeof(numOfBoxes));
 });
 
 // Accept 'Enter' key instead of submit button when setting new grid
@@ -201,6 +203,7 @@ setSideInput.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
       event.preventDefault();
       document.getElementById("submit-button").click();
+      console.log(typeof(numOfBoxes));
     }
 });
 
