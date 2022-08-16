@@ -10,7 +10,7 @@ const controlBox = document.querySelector('#control-box');
 
 const setSideDiv = document.getElementById('side-settings-div');
 const setSideInstructions = document.getElementById('set-side-instructions');
-setSideInstructions.textContent = "Type the number of squares on each side of the grid and click 'Submit', or simply press 'Enter' on your keyboard. I'll start you off with a 16 x 16 grid 😊";
+setSideInstructions.textContent = "Type the number of squares that will be on each side of the grid in the box below and click 'Submit', or press 'Enter' on your keyboard. I'll start you off with a 16 x 16 grid! 😊";
 
 const setSideInput = document.getElementById('input-box');
 const submitBtn = document.getElementById('submit-button');
