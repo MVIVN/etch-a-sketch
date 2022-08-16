@@ -28,8 +28,6 @@ const currentColor = document.getElementById('current-color');
 
 const colorInput = document.getElementById('color-input');
 
-
-
 const rainbowButton = document.getElementById('rainbow-button');
 rainbowButton.setAttribute('class', 'rainbow-button');
 
@@ -57,8 +55,6 @@ function createGrid(length) {
     }
 }
 
-
-
 function setNewGrid() {
     numOfBoxes = setSideInput.value;
     if (numOfBoxes < 1) {
@@ -80,6 +76,15 @@ function setNewGrid() {
     setSideInput.setAttribute('placeholder', `${numOfBoxes}`);
 }
 
+function draw(color) {
+    const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
+    gridBox.forEach(box => {
+        box.addEventListener('mouseover', () => {
+            box.setAttribute('style', `background-color: ${color}`);
+        })
+    });
+}
+
 function createPalette () {
     colorPaletteContainer.style.gridTemplateColumns = `repeat(10, 30px)`;
     colorPaletteContainer.style.gridTemplateRows = `repeat(5, 30px)`;
@@ -97,16 +102,6 @@ function createPalette () {
     }    
 }
 
-// Drawing functionality
-function draw(color) {
-    const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
-    gridBox.forEach(box => {
-        box.addEventListener('mouseover', () => {
-            box.setAttribute('style', `background-color: ${color}`);
-        })
-    });
-}
-
 function generateRandomColor () {
     let r = Math.floor(Math.random() * 256);
     let g = Math.floor(Math.random() * 256);
@@ -114,8 +109,6 @@ function generateRandomColor () {
     let randomColour = `rgb(${r}, ${g}, ${b})`;
     return randomColour;
 }
-
-
 
 function erase() {
     const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
@@ -151,7 +144,7 @@ function resetCurrentGrid () {
     setSideInstructions.textContent = setSideInstructions.textContent = "There's nothing more inspiring than a blank canvas! The possibilities are endless! 😍";
 }
 
-
+// Make appropriate sections glow depending on user selection
 function activeButton (active, disabled1) {
     if (active === drawButton || active === eraseButton) {
         active.classList.add('active-button');
@@ -192,7 +185,6 @@ function clickReset () {
 }
 
 // Event Listeners (outside scope of functions)
-
 submitBtn.addEventListener('click', function() {
     setNewGrid();
     console.log(typeof(numOfBoxes));
