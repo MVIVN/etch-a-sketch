@@ -20,9 +20,9 @@ body {
     font-family: 'Share Tech Mono', monospace;
     font-size: 1.5rem;
     font-weight: 700;
-    color: rgb(250, 157, 36);
+    color: white;
     background-image: linear-gradient(to right, #8e9eab, #eef2f3, #8e9eab);
-    box-shadow: 15px 10px 40px black;
+    box-shadow: 15px 10px 40px rgb(42, 42, 42);
 }
 
 #header h1 {
@@ -41,7 +41,7 @@ body {
     height: 650px;
     border: 5px solid silver;
     border-style: ridge;
-    box-shadow: 15px 10px 40px black;
+    box-shadow: 15px 10px 40px rgb(42, 42, 42);
 }
 
 #control-box {
@@ -53,7 +53,7 @@ body {
     border-style: ridge;
     /* background-image: linear-gradient(to right, #fc00ff, #00dbde); /* I like this gradient, might come back to it*/
     background-image: linear-gradient(80deg, #8e9eab, #eef2f3, #8e9eab);
-    box-shadow: 15px 10px 40px black;
+    box-shadow: 15px 10px 40px rgb(42, 42, 42);
 }
 
 #side-settings-div {
@@ -177,6 +177,7 @@ body {
 .select-color,
 .select-rainbow {
     width: 148px;
+    padding: 3px 0;
     text-align: center;
     border-left: 4px solid white;
     border-right: 4px solid white;
@@ -189,9 +190,9 @@ body {
 #current-color {
     width: 100px;
     height: 50px;
-    border-left: 10px solid white;
-    border-right: 10px solid white;
-    border-bottom: 10px solid white;
+    border-left: 8px solid white;
+    border-right: 8px solid white;
+    border-bottom: 8px solid white;
     margin-bottom: 30px;
     margin-left: auto;
     margin-right: auto;
@@ -216,12 +217,25 @@ body {
     background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
 }
 
+.select-from-palette {
+    margin: 10px auto 0;
+    width: 300px;
+    text-align: center;
+    border-left: 8px solid white;
+    border-right: 8px solid white;
+    border-top: 8px solid white;
+    background-color: black;
+    color: rgb(10, 184, 10);
+    font-family: 'Share Tech Mono', monospace;
+    padding: 3px 0;
+}
+
 #color-palette-container {
     display: grid;
     width: 300px;
     height: 150px;
-    margin: 10px auto 0;
-    border: 10px solid white;
+    margin: 0 auto 0;
+    border: 8px solid white;
 }
 
 .active-box {
