@@ -15,9 +15,7 @@ setSideInput.setAttribute('placeholder', '16') // displays default grid setting
 setSideInput.setAttribute('id', 'input-box');
 const submitBtn = document.createElement('button');
 submitBtn.setAttribute('id', 'submit-button');
-submitBtn.addEventListener('click', function() {
-    setNewGrid();
-});
+
 submitBtn.textContent = 'SUBMIT'
 setSideDiv.appendChild(setSideInput);
 setSideDiv.appendChild(submitBtn);
@@ -27,21 +25,7 @@ const drawButton = document.getElementById('draw-button');
 const eraseButton = document.getElementById('erase-button');
 const resetButton = document.getElementById('reset-button');
 
-drawButton.addEventListener('click', function() {
-    draw(pencilColor);
-    activeButton(drawButton, eraseButton);
-});
-activeButton(drawButton, eraseButton) // Sets default button state when sketchpad loads onclick
 
-eraseButton.addEventListener('click', function () {
-    erase();
-    activeButton(eraseButton, drawButton);
-});
-
-resetButton.addEventListener('click', function() {
-    resetCanvas();
-    clickReset();
-});
 
 const colorfulContainer = document.getElementById('colorful-container');
 
@@ -50,16 +34,7 @@ const colorPicker = document.getElementById('color-picker-div');
 const currentColor = document.getElementById('current-color');
 
 const colorInput = document.getElementById('color-input');
-colorInput.addEventListener('change', function() {
-    pencilColor = colorInput.value;
-    draw(pencilColor);
-    activeButton(drawButton, eraseButton);
-});
-colorInput.addEventListener('click', function() {
-    pencilColor = colorInput.value;
-    draw(pencilColor);
-    activeButton(drawButton, eraseButton);
-});
+
 
 const rainbowButton = document.getElementById('rainbow-button');
 rainbowButton.setAttribute('class', 'rainbow-button');
@@ -126,7 +101,7 @@ function createPalette () {
         colorbox.addEventListener('click', function() {
             pencilColor = colorbox.style.backgroundColor;
             draw(pencilColor);
-            activeButton(drawButton, eraseButton);
+            activeButton(colorPaletteContainer, eraseButton);
             currentColor.style.backgroundColor = colorbox.style.backgroundColor;
         });
     }    
@@ -150,16 +125,7 @@ function generateRandomColor () {
     return randomColour;
 }
 
-rainbowButton.addEventListener('click', function() {
-    activeButton(rainbowButton, eraseButton);
-    const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
-    gridBox.forEach(box => {
-        box.addEventListener('mouseover', () => {
-            pencilColor = generateRandomColor();
-            box.setAttribute('style', `background-color: ${pencilColor}`);
-        });
-    });
-});
+
 
 function erase() {
     const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
@@ -181,9 +147,32 @@ function activeButton (active, disabled1) {
     if (active === drawButton || active === eraseButton) {
         active.classList.add('active-button');
         drawButton.classList.remove('active-rainbow');
+        colorInput.classList.remove('active-box');
+        rainbowButton.classList.remove('active-box');
+        colorPaletteContainer.classList.remove('active-box');
+        currentColor.classList.remove('active-current-color');
+    } else if (active === colorInput) {
+        drawButton.classList.add('active-button');
+        drawButton.classList.remove('active-rainbow');
+        colorInput.classList.add('active-box');
+        rainbowButton.classList.remove('active-box');
+        eraseButton.classList.remove('active-button');
+        colorPaletteContainer.classList.remove('active-box');
+        currentColor.classList.remove('active-current-color');
     } else if (active === rainbowButton) {
         drawButton.classList.add('active-rainbow');
-        console.log(rainbowButton);
+        rainbowButton.classList.add('active-box');
+        colorInput.classList.remove('active-box');
+        colorPaletteContainer.classList.remove('active-box');
+        currentColor.classList.remove('active-current-color');
+    } else if (active === colorPaletteContainer) {
+        drawButton.classList.add('active-button');
+        colorPaletteContainer.classList.add('active-box');
+        currentColor.classList.add('active-current-color');
+        colorInput.classList.remove('active-box');
+        rainbowButton.classList.remove('active-box');
+        eraseButton.classList.remove('active-button');
+        drawButton.classList.remove('active-rainbow');
     }
     disabled1.classList.remove('active-button');
 }
@@ -192,3 +181,48 @@ function clickReset () {
     activeButton(drawButton, eraseButton);
     draw(pencilColor);
 }
+
+
+
+
+// Event Listeners (outside scope of functions)
+
+submitBtn.addEventListener('click', function() {
+    setNewGrid();
+});
+
+drawButton.addEventListener('click', function() {
+    draw(pencilColor);
+    activeButton(drawButton, eraseButton);
+});
+activeButton(drawButton, eraseButton) // Sets default draw button state when sketchpad loads onclick
+
+eraseButton.addEventListener('click', function () {
+    erase();
+    activeButton(eraseButton, drawButton);
+});
+
+resetButton.addEventListener('click', function() {
+    resetCanvas();
+    clickReset();
+});
+colorInput.addEventListener('change', function() {
+    pencilColor = colorInput.value;
+    draw(pencilColor);
+    activeButton(colorInput, eraseButton);
+});
+colorInput.addEventListener('click', function() {
+    pencilColor = colorInput.value;
+    draw(pencilColor);
+    activeButton(colorInput, eraseButton);
+});
+rainbowButton.addEventListener('click', function() {
+    activeButton(rainbowButton, eraseButton);
+    const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
+    gridBox.forEach(box => {
+        box.addEventListener('mouseover', () => {
+            pencilColor = generateRandomColor();
+            box.setAttribute('style', `background-color: ${pencilColor}`);
+        });
+    });
+});
