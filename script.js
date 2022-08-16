@@ -9,23 +9,16 @@ draw(pencilColor); // calls function to enable drawing before user input
 const controlBox = document.querySelector('#control-box');
 
 const setSideDiv = document.getElementById('side-settings-div');
-const setSideInput = document.createElement('input');
-setSideInput.setAttribute('type', 'text');
-setSideInput.setAttribute('placeholder', '16') // displays default grid setting
-setSideInput.setAttribute('id', 'input-box');
-const submitBtn = document.createElement('button');
-submitBtn.setAttribute('id', 'submit-button');
+const setSideInstructions = document.getElementById('set-side-instructions');
+setSideInstructions.textContent = "Type the number of squares on each side of the grid and click 'Submit', or simply press 'Enter' on your keyboard. I'll start you off with a 16 x 16 grid 😊";
 
-submitBtn.textContent = 'SUBMIT'
-setSideDiv.appendChild(setSideInput);
-setSideDiv.appendChild(submitBtn);
+const setSideInput = document.getElementById('input-box');
+const submitBtn = document.getElementById('submit-button');
 
 const drawEraseResetDiv = document.getElementById('draw-erase-reset');
 const drawButton = document.getElementById('draw-button');
 const eraseButton = document.getElementById('erase-button');
 const resetButton = document.getElementById('reset-button');
-
-
 
 const colorfulContainer = document.getElementById('colorful-container');
 
@@ -63,22 +56,18 @@ function createGrid(length) {
     }
 }
 
-// Accept 'Enter' key instead of submit button when setting new grid
-setSideInput.addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      document.getElementById("submit-button").click();
-    }
-});
+
 
 function setNewGrid() {
     numOfBoxes = setSideInput.value;
     if (numOfBoxes < 1) {
         numOfBoxes = 1;
-        // display some message
+        setSideInstructions.textContent = "That's too low! 😮 You need at least ONE pixel to make art, so I've turned the grid into one big pixel 😊";
     } else if (numOfBoxes > 100) {
         numOfBoxes = 100;
-        // display some message
+        setSideInstructions.textContent = "Sorry, I can't handle that many pixels! 😰 I know you have big ideas, so a 100 x 100 grid should do the trick! 😊";
+    } else {
+        setSideInstructions.textContent = "I can't wait to see what kind of masterpiece you come up with! Have fun! 😀";
     }
 
     createGrid(numOfBoxes);
@@ -141,7 +130,26 @@ function resetCanvas () {
     gridBox.forEach(box => 
         {box.setAttribute('style', 'background-color: white')});
     activeButton(drawButton, eraseButton);
+
+    numOfBoxes = setSideInput.value;
+    if (numOfBoxes < 1) {
+        numOfBoxes = 1;
+        setSideInstructions.textContent = "Your input is too low -- or you didn't type a valid number! 😮 You need at least ONE pixel to make art, so I've turned the grid into one big pixel 😊";
+    } else if (numOfBoxes > 100) {
+        numOfBoxes = 100;
+        setSideInstructions.textContent = "Sorry, I can't handle that many pixels! 😰 I know you have big ideas, so a 100 x 100 grid should do the trick! 😊";
+    } else { setSideInstructions.textContent = setSideInstructions.textContent = "I can't wait to see what kind of masterpiece you come up with! Have fun! 😀";
+    }
 }
+
+function resetCurrentGrid () {
+    const gridBox = document.querySelectorAll('div.grid-item'); //nodelist
+    gridBox.forEach(box => 
+        {box.setAttribute('style', 'background-color: white')});
+    activeButton(drawButton, eraseButton);
+    setSideInstructions.textContent = setSideInstructions.textContent = "There's nothing more inspiring than a blank canvas! The possibilities are endless! 😍";
+}
+
 
 function activeButton (active, disabled1) {
     if (active === drawButton || active === eraseButton) {
@@ -182,13 +190,18 @@ function clickReset () {
     draw(pencilColor);
 }
 
-
-
-
 // Event Listeners (outside scope of functions)
 
 submitBtn.addEventListener('click', function() {
     setNewGrid();
+});
+
+// Accept 'Enter' key instead of submit button when setting new grid
+setSideInput.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      document.getElementById("submit-button").click();
+    }
 });
 
 drawButton.addEventListener('click', function() {
@@ -203,7 +216,7 @@ eraseButton.addEventListener('click', function () {
 });
 
 resetButton.addEventListener('click', function() {
-    resetCanvas();
+    resetCurrentGrid();
     clickReset();
 });
 colorInput.addEventListener('change', function() {
