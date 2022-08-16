@@ -8,8 +8,7 @@ draw(pencilColor); // calls function to enable drawing before user input
 // Control Box
 const controlBox = document.querySelector('#control-box');
 
-const setSideDiv = document.createElement('div');
-setSideDiv.setAttribute('id', 'side-settings-div');
+const setSideDiv = document.getElementById('side-settings-div');
 const setSideInput = document.createElement('input');
 setSideInput.setAttribute('type', 'text');
 setSideInput.setAttribute('placeholder', '16') // displays default grid setting
@@ -23,51 +22,34 @@ submitBtn.textContent = 'SUBMIT'
 setSideDiv.appendChild(setSideInput);
 setSideDiv.appendChild(submitBtn);
 
-const drawEraseResetDiv = document.createElement('div');
-drawEraseResetDiv.setAttribute('id', 'draw-erase-reset');
-const drawButton = document.createElement('button');
-const eraseButton = document.createElement('button');
-const resetButton = document.createElement('button');
+const drawEraseResetDiv = document.getElementById('draw-erase-reset');
+const drawButton = document.getElementById('draw-button');
+const eraseButton = document.getElementById('erase-button');
+const resetButton = document.getElementById('reset-button');
 
-drawButton.setAttribute('id', 'draw-button');
 drawButton.addEventListener('click', function() {
     draw(pencilColor);
     activeButton(drawButton, eraseButton);
 });
-drawButton.textContent = 'DRAW';
 activeButton(drawButton, eraseButton) // Sets default button state when sketchpad loads onclick
 
-eraseButton.setAttribute('id', 'erase-button');
 eraseButton.addEventListener('click', function () {
     erase();
     activeButton(eraseButton, drawButton);
 });
-eraseButton.textContent = 'ERASE';
 
-resetButton.setAttribute('id', 'reset-button');
 resetButton.addEventListener('click', function() {
     resetCanvas();
     clickReset();
 });
-resetButton.textContent = 'RESET';
 
-drawEraseResetDiv.appendChild(drawButton);
-drawEraseResetDiv.appendChild(eraseButton);
-drawEraseResetDiv.appendChild(resetButton);
+const colorfulContainer = document.getElementById('colorful-container');
 
-const colorfulContainer = document.createElement('div');
-colorfulContainer.setAttribute('id', 'colorful-container');
+const colorPicker = document.getElementById('color-picker-div');
 
-const colorPicker = document.createElement('div');
-colorPicker.setAttribute('id', 'color-picker-div');
+const currentColor = document.getElementById('current-color');
 
-const currentColor = document.createElement('div');
-currentColor.setAttribute('id', 'current-color');
-
-const colorInput = document.createElement('input');
-colorInput.setAttribute('type', 'color');
-colorInput.setAttribute('id', 'color-input')
-colorInput.setAttribute('value', '#000000'); // Sets default color to black
+const colorInput = document.getElementById('color-input');
 colorInput.addEventListener('change', function() {
     pencilColor = colorInput.value;
     draw(pencilColor);
@@ -79,16 +61,10 @@ colorInput.addEventListener('click', function() {
     activeButton(drawButton, eraseButton);
 });
 
-
-const rainbowButton = document.createElement('div');
+const rainbowButton = document.getElementById('rainbow-button');
 rainbowButton.setAttribute('class', 'rainbow-button');
 
-// colorPicker.appendChild(currentColor);
-colorPicker.appendChild(colorInput);
-colorPicker.appendChild(rainbowButton);
-
-const colorPaletteContainer = document.createElement('div');
-colorPaletteContainer.setAttribute('id', 'color-palette-container');
+const colorPaletteContainer = document.getElementById('color-palette-container');
 const colorPalette =
     ['#660000', '#663300', '#666600', '#336600', '#006600', '#006633',
     '#006666', '#003366', '#000066', '#330066', '#990000', '#994C00',
@@ -100,18 +76,6 @@ const colorPalette =
     '#FFFF33', '#99FF33', '#33FF33', '#33FF99', '#33FFFF', '#3399FF',
     '#3333FF', '#9933FF'];
 createPalette(); // generates the color palette
-
-colorfulContainer.appendChild(colorPicker);
-colorfulContainer.appendChild(colorPaletteContainer);
-colorfulContainer.appendChild(currentColor)
-
-
-
-// Add the various elements created above into the Control Box
-controlBox.appendChild(setSideDiv);
-controlBox.appendChild(drawEraseResetDiv);
-controlBox.appendChild(colorfulContainer);
-
 
 // Functions
 function createGrid(length) {
