@@ -71,12 +71,13 @@ colorInput.setAttribute('value', '#000000'); // Sets default color to black
 colorInput.addEventListener('change', function() {
     pencilColor = colorInput.value;
     draw(pencilColor);
+    activeButton(drawButton, eraseButton);
 });
 
 const rainbowButton = document.createElement('div');
 rainbowButton.setAttribute('id', 'rainbow-button');
 
-colorPicker.appendChild(currentColor);
+// colorPicker.appendChild(currentColor);
 colorPicker.appendChild(colorInput);
 colorPicker.appendChild(rainbowButton);
 
@@ -96,6 +97,7 @@ createPalette(); // generates the color palette
 
 colorfulContainer.appendChild(colorPicker);
 colorfulContainer.appendChild(colorPaletteContainer);
+colorfulContainer.appendChild(currentColor)
 
 
 
@@ -212,6 +214,9 @@ function activeButton (active, disabled1) {
         drawButton.classList.remove('active-rainbow');
     } else if (active === rainbowButton) {
         drawButton.classList.add('active-rainbow');
+        rainbowButton.classList.remove('rainbow-button');
+        rainbowButton.classList.add('rainbow-button-active');
+        console.log(rainbowButton);
     }
     disabled1.classList.remove('active-button');
 }

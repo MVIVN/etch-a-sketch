@@ -77,11 +77,16 @@
 }
 
 #current-color {
-    width: 62px;
-    height: 62px;
-    border: 4px solid white;
-    border-radius: 50%;
-    margin-top: 10px;
+    width: 100px;
+    height: 50px;
+    border-left: 10px solid white;
+    border-right: 10px solid white;
+    border-bottom: 10px solid white;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom-left-radius: 60px;
+    border-bottom-right-radius: 60px;
     background-color: black;
 }
 
@@ -100,11 +105,19 @@
     background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
 }
 
+.rainbow-button-active {
+    width: 62px;
+    height: 62px;
+    border: 4px solid orange;
+    margin-top: 10px;
+    background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+}
+
 #color-palette-container {
     display: grid;
     width: 300px;
     height: 150px;
-    margin: 10px 0;
+    margin: 10px 0 0 0;
     border-top: 10px solid white;
     border-bottom: 10px solid white;
 }
